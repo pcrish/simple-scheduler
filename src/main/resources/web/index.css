@@ -1,0 +1,216 @@
+
+th {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 10px;
+    font-size: 12px;
+}
+table{
+    overflow-x: auto;
+    white-space: nowrap;
+}
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    border-color: aliceblue;
+    text-align: left;
+}
+tr:nth-child(odd) {
+    background-color: paleturquoise;
+    color: black;
+}
+tr:nth-child(even) {
+    background-color: white;
+}
+td {
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+.red-job {
+    background-color: #fb4e4e;
+    color: white;
+}
+
+
+.green-job {
+    background-color: forestgreen;
+    color: white;
+}
+
+
+
+.popup {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,
+    0,
+    0,
+    0.4);
+    display: none;
+}
+
+.popup-content {
+    background-color: white;
+    margin: 10px auto;
+    padding: 20px;
+    border: 1px solid #888888;
+    width: 80%;
+    font-weight: bolder;
+    overflow: auto;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+.popup-content button {
+    display: block;
+    margin: 0 auto;
+}
+
+.show {
+    display: block;
+}
+.loading-overlay{
+    position: fixed;
+    left: 0px;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    text-align: center;
+    display: none;
+    vertical-align: middle;
+    background-color: rgba(255, 255, 255, 0.7);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(1px);
+    padding-top: 20%;
+}
+.skip-rerun {
+    background: radial-gradient(circle, lightgreen 30%, green 90%);
+    border-radius: 4px;
+    color:black ;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    width: 60px;
+    height:20px;
+    font-family: Arial, sans-serif;
+    font-size:12px;
+    border: 1px solid #ddd;
+    font-weight: bold !important;
+}
+
+.skip-rerun:hover {
+    background: radial-gradient(circle, lightgreen 30%, darkgreen 90%);
+    transform: scale(1.05);
+}
+.searchBtn {
+    background: radial-gradient(circle, lightskyblue 30%, steelblue 90%);
+    border-radius: 5px;
+    color:black ;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    width: 60px;
+    height:20px;
+    font-weight: bold;
+}
+
+.searchBtn:hover {
+    background: radial-gradient(circle, lightskyblue 30%, steelblue 90%);
+    transform: scale(1.05);
+}
+
+.form-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width:82%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: nowrap;
+    padding:10px;
+}
+
+
+.form-container input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 160px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    height:30px;
+    font-family: Arial, sans-serif;
+    font-size:12px;
+}
+
+.form-container input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}  .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+.dropdown-btn {
+    padding: 8px;
+    background-color: white;
+    color: Black;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size:12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+    border-radius: 4px;
+}
+
+.dropdown-btn::after {
+    content: "▼";
+    font-family: Arial, sans-serif;
+    font-size:12px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    max-height: 100%;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+}
+
+.dropdown-content label {
+    padding: 8px;
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size:12px;
+}
+.dropdown-content input {
+    width: 10px;
+    height: 9px;
+}
+
+.dropdown.show .dropdown-content {
+    display: block;
+}

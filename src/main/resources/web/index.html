@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scheduler</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+<body>
+
+<!--    <input type="number" id = "iJobId" placeholder = "Job Id">-->
+<!--    <input type="text" id = "iJobName" placeholder = "Job Name">-->
+<!--    <input type="text" id = "iJobTree" placeholder = "Job Tree">-->
+<!--    <label>Order Date:</label>-->
+<!--    <input type="date" id = "iOrderDate" placeholder = "Order Date">-->
+<div class="form-container">
+    <input type="number" id="iJobId" style="width:100px " placeholder="Enter Job ID">
+    <input type="text" id="iJobName" placeholder="Enter Job Name">
+    <input type="text" id="iJobTree" placeholder="Enter Job Tree">
+    <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown()">Select Status</button>
+        <div class="dropdown-content">
+            <label><input type="checkbox" id="Warning"> Warning</label>
+            <label><input type="checkbox" id="Running"> Running</label>
+            <label><input type="checkbox" id="Success"> Success</label>
+            <label><input type="checkbox" id="Failed"> Failed</label>
+        </div>
+    </div>
+    <label style=" font-family: Arial, sans-serif;font-size:12px;">Order Date:</label>
+    <input type="date" style="width:100px" id="iOrderDate" placeholder="Select Order Date">
+    <input type="button" id = "search" class="searchBtn" style="width:80px "accept=""  value="Search" onclick="SearchData()"></input>
+<!--    <button type="submit">Submit</button>-->
+</div>
+
+<!--    <input type="button" id = "search" class="searchBtn" value="Search" onclick="SearchData()"></input>-->
+
+
+<!--<div class="status-container">-->
+<!--    <input type="checkbox" id="waitingStatus" class="status-checkbox">-->
+<!--    <label for="waitingStatus" class="status-label">Waiting</label>-->
+
+<!--    <input type="checkbox" id="runningStatus" class="status-checkbox">-->
+<!--    <label for="runningStatus" class="status-label">Running</label>-->
+
+<!--    <input type="checkbox" id="completedStatus" class="status-checkbox">-->
+<!--    <label for="completedStatus" class="status-label">Success</label>-->
+
+<!--    <input type="checkbox" id="failedStatus" class="status-checkbox">-->
+<!--    <label for="failedStatus" class="status-label">Failed</label>-->
+<!--</div>-->
+
+<br>
+    <div id="loader"  class="loading-overlay"><img src="images/Loading.gif"  style="width: 60px;"></div>
+        <table id="jobsTable" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Job ID</th>
+                    <th>Order Date</th>
+                    <th hidden>Fully Qualified Class Name</th>
+                    <th hidden>Parameter</th>
+                    <th hidden>Executable Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Tree</th>
+                    <th>Status</th>
+                    <th>Status Description</th>
+                    <th>Started</th>
+                    <th>Completed</th>
+                    <th hidden>Error</th>
+                    <th>Retry</th>
+                    <th>SLA</th>
+                    <th  hidden>Schedule Type</th>
+                    <th  hidden>Job Days</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="jobsList">
+
+            </tbody>
+
+        </table>
+
+
+    <div id="myPopup" class="popup">
+        <div class="popup-content">
+            <table class="center">
+                <tr>
+                    <td><label >Job ID</label> </td>
+                    <td><p id="jobId"></p></td>
+                </tr>
+                <tr>
+                    <td><label >Order Date</label> </td>
+                    <td><p id="orderDate"></p></td>
+                </tr>
+                <tr>
+                    <td><label >Fully Qualified Class Name</label> </td>
+                    <td><p id="fullyQualifiedClassName"></p></td>
+                </tr>
+                <tr>
+                    <td><label >Parameter</label> </td>
+                    <td><p id="parameter"></p></td>
+                </tr>
+                <tr>
+                    <td><label >Executable Type</label> </td>
+                    <td><p id="executableType"></p></td>
+                </tr>
+                <tr>
+                    <td><label >Name</label> </td>
+                    <td><p id="name"></p></td>
+                </tr>
+                <tr>
+                    <td><label >Description</label> </td>
+                    <td><p id="description"></p></td>
+                </tr>
+                <tr>
+                    <td><label >Tree</label> </td>
+                    <td><p id="tree"></p></td>
+
+                </tr>
+                <tr>
+                    <td><label >Status</label> </td>
+                    <td><p id="status"></p></td>
+                </tr>
+                <tr>
+                    <td><label >Status Description</label> </td>
+                    <td><p id="statusDescription"></p></td>
+                </tr>
+                <tr>
+                    <td><label >Started</label> </td>
+                    <td><p id="started"></p></td>
+                </tr>
+                <tr>
+                    <td><label >Completed</label> </td>
+                    <td><p id="completed"></p></td>
+                </tr>
+                <tr>
+                    <td><label >Error</label> </td>
+                    <td><p id="error"></p></td>
+                </tr>
+                <tr>
+                    <td><label >Retry</label> </td>
+                    <td><p id="retry"></p></td>
+                </tr>
+                <tr>
+                    <td><label >SLA</label> </td>
+                    <td><p id="sla"></p></td>
+                </tr>
+                <tr>
+                    <td><label >Schedule Type</label> </td>
+                    <td><p id="scheduleType"></p></td>
+                </tr>
+                <tr>
+                    <td><label >Job Days</label> </td>
+                    <td><p id="jobDays"></p></td>
+                </tr>
+
+
+            </table>
+
+
+
+            <button id="closePopup">
+                Close
+            </button>
+        </div>
+    </div>
+<!--    </div>-->
+
+    <script>
+        closePopup.addEventListener(
+            "click",
+            function () {
+                myPopup.classList.remove(
+                    "show"
+                );
+            }
+        );
+        window.addEventListener(
+            "click",
+            function (event) {
+                if (event.target == myPopup) {
+                    myPopup.classList.remove(
+                        "show"
+                    );
+                }
+            }
+        );
+    </script>
+
+    <template id="jobsTemplate">
+        <tr onclick="showPopup(this)">
+            <td class="jobId"></td>
+            <td class="orderDate"></td>
+            <td class="fullyQualifiedClassName" hidden></td>
+            <td class="parameter" hidden></td>
+            <td class="executableType" hidden></td>
+            <td class="name"></td>
+            <td class="description"></td>
+            <td class="tree"></td>
+            <td class="status"></td>
+            <td class="statusDescription"></td>
+            <td class="started">Started</td>
+            <td class="completed">Completed</td>
+            <td class="error" hidden>Error</td>
+            <td class="retry"></td>
+            <td class="sla"></td>
+            <td class="scheduleType" hidden></td>
+            <td class="jobDays" hidden></td>
+<!--            <td style="line-height: 0; padding-bottom: 0px; padding-top: 0px;padding-left: 0px;">-->
+<!--                <img src="images/SkipButton.jpg" style="width: 60px; height: 20px;">-->
+<!--                <img src="images/PlayButton.jpg" style="width: 60px; height: 20px;">-->
+<!--            </td>-->
+            <td>
+                <button id="rerunBtn" class="skip-rerun" >Rerun</button>
+                <button id="skipBtn" class="skip-rerun" >Skip</button>
+            </td>
+        </tr>
+    </template>
+
+
+</body>
+</html>
+
+</body>
+</html>

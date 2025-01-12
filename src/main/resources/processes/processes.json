@@ -1,0 +1,17 @@
+[
+  {
+    "jobId": 1,
+    "jobName": "Test File watch job",
+    "jobDescription": "This job monitors files from source",
+    "jobGroup": "Source 1 Jobs",
+    "isActive": true,
+    "jobSchedules": [
+      {
+        "scheduleType" : "DAILY",
+        "jobDays" : ["Sun", "Mon", "tue"],
+        "time" : "10:10"
+      }
+    ],
+    "jobSLA": "10:50"
+  }
+]
