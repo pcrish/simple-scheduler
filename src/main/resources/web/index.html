@@ -80,7 +80,18 @@
 
         </table>
 
-
+<div id="alertPopup" class="altPopup">
+    <div class="altPopup-content">
+        <div style="padding-left:10px">
+        <p id="message"></p>
+        <textarea id="popupTextarea" rows="3" cols="2" placeholder="Enter your reason here..."></textarea>
+        </div>
+            <div class="popup-footer">
+            <button onclick="closePopupBtn()">Close</button>
+            <button id="rerunOrSkipBtn" onclick="rerunOrSkipProcess()">Ok</button>
+        </div>
+    </div>
+</div>
     <div id="myPopup" class="popup">
         <div class="popup-content">
             <table class="center">
@@ -159,7 +170,7 @@
 
 
 
-            <button id="closePopup">
+            <button id="closePopup" class="searchBtn" style="border: 1px solid #ddd;">
                 Close
             </button>
         </div>
@@ -188,31 +199,31 @@
     </script>
 
     <template id="jobsTemplate">
-        <tr onclick="showPopup(this)">
-            <td class="jobId"></td>
-            <td class="orderDate"></td>
-            <td class="fullyQualifiedClassName" hidden></td>
-            <td class="parameter" hidden></td>
-            <td class="executableType" hidden></td>
-            <td class="name"></td>
-            <td class="description"></td>
-            <td class="tree"></td>
-            <td class="status"></td>
-            <td class="statusDescription"></td>
-            <td class="started">Started</td>
-            <td class="completed">Completed</td>
-            <td class="error" hidden>Error</td>
-            <td class="retry"></td>
-            <td class="sla"></td>
-            <td class="scheduleType" hidden></td>
-            <td class="jobDays" hidden></td>
+        <tr >
+            <td class="jobId" onclick="showPopup(this)"></td>
+            <td class="orderDate" onclick="showPopup(this)"></td>
+            <td class="fullyQualifiedClassName" onclick="showPopup(this)" hidden></td>
+            <td class="parameter" onclick="showPopup(this)" hidden></td>
+            <td class="executableType" onclick="showPopup(this)" hidden></td>
+            <td class="name" onclick="showPopup(this)"></td>
+            <td class="description"onclick="showPopup(this)" ></td>
+            <td class="tree" onclick="showPopup(this)" ></td>
+            <td class="status" onclick="showPopup(this)"></td>
+            <td class="statusDescription" onclick="showPopup(this)"></td>
+            <td class="started" onclick="showPopup(this)">Started</td>
+            <td class="completed" onclick="showPopup(this)">Completed</td>
+            <td class="error" onclick="showPopup(this)" hidden>Error</td>
+            <td class="retry" onclick="showPopup(this)"></td>
+            <td class="sla" onclick="showPopup(this)"></td>
+            <td class="scheduleType" onclick="showPopup(this)" hidden></td>
+            <td class="jobDays" onclick="showPopup(this)" hidden></td>
 <!--            <td style="line-height: 0; padding-bottom: 0px; padding-top: 0px;padding-left: 0px;">-->
 <!--                <img src="images/SkipButton.jpg" style="width: 60px; height: 20px;">-->
 <!--                <img src="images/PlayButton.jpg" style="width: 60px; height: 20px;">-->
 <!--            </td>-->
             <td>
-                <button id="rerunBtn" class="skip-rerun" >Rerun</button>
-                <button id="skipBtn" class="skip-rerun" >Skip</button>
+                <button id="rerunBtn"  onclick="openRerunPopup()" class="skip-rerun" >Rerun</button>
+                <button id="skipBtn" class="skip-rerun" onclick="openSkipPopup()"  >Skip</button>
             </td>
         </tr>
     </template>

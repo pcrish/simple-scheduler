@@ -1,8 +1,7 @@
 window.onload = function() {
     loadData();
 };
-
-
+ var checkSkipAndRerunMethod="";
 // function loadData() {
 //     document.getElementById('loader').style.display='block'
 //     fetch('api/jobs')
@@ -167,3 +166,30 @@ function getSelectedItems() {
     });
     return selectedItems;
 }
+function openSkipPopup(){
+    document.getElementById("message").innerText = "Are you sure want to stop this process?.";
+    checkSkipAndRerunMethod="skip";
+    openPopUp();
+}
+function openRerunPopup(){
+    document.getElementById("message").innerText = "Are you sure want to rerun this process?.";
+    checkSkipAndRerunMethod="rerun";
+    openPopUp();
+}
+function openPopUp(){
+    document.getElementById('alertPopup').style.display = 'flex';
+}
+function closePopupBtn(){
+    document.getElementById('alertPopup').style.display = 'none';
+
+}
+function rerunOrSkipProcess(){
+    if(checkSkipAndRerunMethod=="rerun"){
+        alert("rerun process");
+    }
+    else if(checkSkipAndRerunMethod=="skip") {
+        alert("skip process");
+    }
+
+}
+
